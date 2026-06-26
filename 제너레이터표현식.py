@@ -13,6 +13,7 @@ for region in all_region_names:
     result.append(region)
 
 
+
 word = """서울시청 주관으로 
 지역 활성화를 위하여 잔치국수를 
 시식하는 행사를 진행하였습니다. 
@@ -26,17 +27,17 @@ word = """서울시청 주관으로
 """
 # 순서가 중요하지 않은 데이터
 base_stop_words = {'노인', '참석', '일동', '주민', 
-                   "지역", "마을", "노인들", "노인분들", "주민들","주민일동",
-                   "이날" }
+                    "지역", "마을", "노인들", "노인분들", "주민들","주민일동",
+                    "이날" }
 found_word = None
 # 전체 문장이 실행되는 순서:
 # 1) 오른쪽 컴프리헨션이 돌면서 하나씩 비교하고 ([True, False, False])
 # 2) any()가 그걸 받아서 "True가 있네!" 하고 최종 True를 반환합니다.
-if any(searchword in word for searchword in base_stop_words):
+if any(searchword in word for searchword in base_stop_words):  # any가 식에 포함 되어있으면 true/false가 한번이라도 적발이 되면 바로 프린트 해버린다.
     print(f"위의 검수단어가 포함되어있습니다.")
 
 findwords = []
-for searchword in base_stop_words:
+for searchword in base_stop_words:   # list가 아니라 set이였기 때문에 순서 상관없이 결과값이 나온다.
     if searchword in word:
         findwords.append(searchword) 
 
